@@ -4,12 +4,18 @@ import java.io.File;
 
 public final class Main {
     public static void main(String[] args) throws Exception {
-        if(args.length == 0){
+        if (args.length == 0) {
             return;
         }
-        new Editor().writeFillNames(
-                new File("/home/strogiyotec/IdeaProjects/test/a3.txt"),
-                new ProcessBuilder()
-        );
+        var file = new File(args[0]);
+        if (!file.exists()) {
+            System.out.println("Not exist");
+        } else {
+            System.out.println(
+                    new Editor().writeFileNames(
+                            file,
+                            new ProcessBuilder()
+                    ));
+        }
     }
 }
