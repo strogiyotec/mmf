@@ -8,9 +8,13 @@ final class Execution {
 
     void start(final String[] args) throws Exception {
         var files = Stream.of(args).map(File::new).collect(Collectors.toList());
-        new Rename(new Duplicates())
+        new Rename()
                 .renameFiles(
-                        new Editor(new TempFile()).edit(new ProcessBuilder(), files),
+                        new Editor().edit(
+                                new ProcessBuilder(),
+                                files,
+                                new TempFileBuilder()
+                        ),
                         files
                 );
     }

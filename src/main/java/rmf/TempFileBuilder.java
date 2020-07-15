@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public final class TempFile {
+final class TempFileBuilder {
 
     /**
      * Create temp file.
@@ -18,7 +18,7 @@ public final class TempFile {
      * @throws IOException              If failed
      * @throws IllegalArgumentException If at least one file doesn't exist
      */
-    File create(final List<File> files) throws IOException {
+    File build(final List<File> files) throws IOException {
         this.checkFilesExist(files);
         final File tempFile = File.createTempFile(Defaults.APP_NAME, "txt");
         tempFile.deleteOnExit();

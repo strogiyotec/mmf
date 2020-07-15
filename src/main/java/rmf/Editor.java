@@ -6,12 +6,6 @@ import java.util.Optional;
 
 final class Editor {
 
-    private final TempFile tempFile;
-
-    Editor(final TempFile tempFile) {
-        this.tempFile = tempFile;
-    }
-
     /**
      * Calls your editor.
      * Create temp file with list of file names
@@ -22,8 +16,8 @@ final class Editor {
      * @return Temp file with new file names
      * @throws Exception If failed
      */
-    File edit(final ProcessBuilder builder, final List<File> toRename) throws Exception {
-        final File tempFile = this.tempFile.create(toRename);
+    File edit(final ProcessBuilder builder, final List<File> toRename, final TempFileBuilder tempFileBuilder) throws Exception {
+        final File tempFile = tempFileBuilder.build(toRename);
         var process = builder
                 .command(
                         Optional.ofNullable(System.getenv("TERMINAL")).orElse("xterm"),
