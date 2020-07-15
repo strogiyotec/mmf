@@ -5,10 +5,6 @@ public final class Main {
         if (args.length == 0) {
             return;
         }
-        System.out.println(
-                new Editor().writeFileNames(
-                        new TempFile().create(args),
-                        new ProcessBuilder()
-                ));
+        new Execution().start(args);
     }
 }
