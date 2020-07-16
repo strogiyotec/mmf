@@ -13,3 +13,8 @@ This is how it works.
 2. Then **rmf** will open your $EDITOR(vim if value is not set) with file names.
 3. Change names and save the file (:wq in vim)
 4. Your files are renamed 
+
+# Demo
+![demo](https://raw.githubusercontent.com/strogiyotec/rmf/master/statics/example.gif)
+
+As you can see three files (b1,b2,b3) were renamed
