@@ -6,7 +6,7 @@
 
     <groupId>rmf</groupId>
     <artifactId>rmf</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -17,6 +17,24 @@
 
         <pmd.plugin.version>3.11.0</pmd.plugin.version>
     </properties>
+
+    <developers>
+        <developer>
+            <id>strogiyotec</id>
+            <name>Almas Abdrazak</name>
+            <email>almas337519@gmail.com</email>
+            <url>https://strogiyotec.github.io/</url>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/strogiyotec/rmf</url>
+    </issueManagement>
 
     <!--Generate documentation-->
     <reporting>
