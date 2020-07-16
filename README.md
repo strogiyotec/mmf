@@ -1,6 +1,11 @@
 # rmf
 Rename multiple files using your $EDITOR. Written in Java compiled by native-image.
 
+## Install
+1. Install executable from latest [release](https://github.com/strogiyotec/rmf/releases)
+2. Put executable into `/usr/local/bin' directory to access it from everywhere
+
+
 # Example
 
 This is how it works.
