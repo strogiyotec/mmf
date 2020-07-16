@@ -18,7 +18,7 @@ final class Rename {
      * @throws IOException If failed
      */
     void renameFiles(final File tempFile, final List<File> files) throws IOException {
-        final List<String> newNames = Files.readAllLines(tempFile.toPath());
+        var newNames = Files.readAllLines(tempFile.toPath());
         this.validate(files, newNames);
         for (int i = 0; i < files.size(); i++) {
             if (!newNames.get(i).equals(files.get(i).getName())) {

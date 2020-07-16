@@ -1,38 +1,56 @@
 package rmf;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
 final class TempFileBuilder {
 
-    /**
-     * Create temp file.
-     * Write all fileNames to temp file
-     * Delete this file on exit
-     *
-     * @param files Files
-     * @return Temp file
-     * @throws IOException              If failed
-     * @throws IllegalArgumentException If at least one file doesn't exist
-     */
-    File build(final List<File> files) throws IOException {
-        this.checkFilesExist(files);
-        final File tempFile = File.createTempFile(Defaults.APP_NAME, "txt");
-        tempFile.deleteOnExit();
-        Files.write(
-                tempFile.toPath(),
-                files.stream().map(File::getName).collect(Collectors.toList())
-        );
-        return tempFile;
+    private final Callable<File> callable;
+
+
+    TempFileBuilder(final String name) {
+        this.callable = () -> {
+            var tempFile = File.createTempFile(name,"test");
+            tempFile.deleteOnExit();
+            return tempFile;
+        };
     }
 
-    private void checkFilesExist(final List<File> files) {
-        for (final File file : files) {
+    /**
+     * Ctor.
+     * Create temp file that contains name of each file
+     *
+     * @param files Files
+     */
+    TempFileBuilder(final List<File> files) {
+        this.callable = () -> {
+            checkFilesExist(files);
+            var tempFile = File.createTempFile(Defaults.APP_NAME, "txt");
+            tempFile.deleteOnExit();
+            Files.write(
+                    tempFile.toPath(),
+                    files.stream().map(File::getName).collect(Collectors.toList())
+            );
+            return tempFile;
+        };
+    }
+
+    File build() throws Exception {
+        return this.callable.call();
+    }
+
+    private static void checkFilesExist(final List<File> files) {
+        for (var file : files) {
             if (!file.exists()) {
-                throw new IllegalArgumentException(String.format("File %s doesn't exist", file.getName()));
+                throw new IllegalArgumentException(
+                        String.format(
+                                "File %s doesn't exist",
+                                file.getName()
+                        )
+                );
             }
         }
     }

@@ -1,19 +1,26 @@
 package rmf;
 
 import java.io.File;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.List;
 
+/**
+ * Rmf entry point.
+ */
 final class Execution {
 
-    void start(final String[] args) throws Exception {
-        var files = Stream.of(args).map(File::new).collect(Collectors.toList());
+    /**
+     * Edit file names.
+     *
+     * @param files Files to rename
+     * @param edit  Editor to use
+     * @throws Exception If failed
+     */
+    void start(final List<File> files, final EditedFileNames edit) throws Exception {
         new Rename()
                 .renameFiles(
-                        new Editor().edit(
-                                new ProcessBuilder(),
+                        edit.store(
                                 files,
-                                new TempFileBuilder()
+                                new TempFileBuilder(files)
                         ),
                         files
                 );
