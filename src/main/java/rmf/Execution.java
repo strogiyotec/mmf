@@ -15,7 +15,7 @@ final class Execution {
      * @param edit  Editor to use
      * @throws Exception If failed
      */
-    void start(final List<File> files, final EditedFileNames edit) throws Exception {
+    void start(final List<File> files, final NamesEditor edit) throws Exception {
         new Rename()
                 .renameFiles(
                         edit.store(

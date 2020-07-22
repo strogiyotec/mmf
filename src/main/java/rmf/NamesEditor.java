@@ -3,7 +3,7 @@ package rmf;
 import java.io.File;
 import java.util.List;
 
-interface EditedFileNames {
+interface NamesEditor {
 
     /**
      * Get file that stores new file names.

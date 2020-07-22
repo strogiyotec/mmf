@@ -7,11 +7,11 @@ import java.util.List;
 /**
  * Mocked editor that stores predefined names in temp file.
  */
-public final class MockedEditor implements EditedFileNames {
+final class MockedEditor implements NamesEditor {
 
     private final List<String> names;
 
-    public MockedEditor(final List<String> names) {
+    MockedEditor(final List<String> names) {
         this.names = names;
     }
 

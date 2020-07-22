@@ -12,7 +12,7 @@ public final class Main {
         }
         new Execution().start(
                 toFiles(args),
-                new UsingEditor(
+                new Vim(
                         new ProcessBuilder()
                 )
         );

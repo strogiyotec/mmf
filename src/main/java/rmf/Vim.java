@@ -7,11 +7,11 @@ import java.util.Optional;
 /**
  * Rename using editor.
  */
-final class UsingEditor implements EditedFileNames {
+final class Vim implements NamesEditor {
 
     private final ProcessBuilder editorProcess;
 
-    UsingEditor(final ProcessBuilder editorProcess) {
+    Vim(final ProcessBuilder editorProcess) {
         this.editorProcess = editorProcess;
     }
 
