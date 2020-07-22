@@ -18,7 +18,7 @@ final class Execution {
     void start(final List<File> files, final NamesEditor edit) throws Exception {
         new Rename()
                 .renameFiles(
-                        edit.store(
+                        edit.edit(
                                 files,
                                 new TempFileBuilder(files)
                         ),

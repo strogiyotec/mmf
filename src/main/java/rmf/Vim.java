@@ -16,7 +16,7 @@ final class Vim implements NamesEditor {
     }
 
     @Override
-    public File store(final List<File> toRename, final TempFileBuilder tempFileBuilder) throws Exception {
+    public File edit(final List<File> toRename, final TempFileBuilder tempFileBuilder) throws Exception {
         var tempFile = tempFileBuilder.build();
         var process = this.editorProcess
                 .command(

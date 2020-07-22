@@ -6,13 +6,13 @@ import java.util.List;
 interface NamesEditor {
 
     /**
-     * Get file that stores new file names.
+     * Edit file names and store new names in file.
      *
      * @param toRename Files to rename
-     * @param toStore  Temp file to store new names
+     * @param toStore  Temp file to edit new names
      * @return File with new names
      * @throws Exception If failed
      */
-    File store(List<File> toRename, TempFileBuilder toStore) throws Exception;
+    File edit(List<File> toRename, TempFileBuilder toStore) throws Exception;
 
 }

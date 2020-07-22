@@ -16,7 +16,7 @@ final class MockedEditor implements NamesEditor {
     }
 
     @Override
-    public File store(final List<File> toRename, final TempFileBuilder toStore) throws Exception {
+    public File edit(final List<File> toRename, final TempFileBuilder toStore) throws Exception {
         var tempFile = toStore.build();
         Files.write(tempFile.toPath(), this.names);
         return tempFile;
