@@ -2,6 +2,7 @@ package rmf;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashSet;
@@ -22,7 +23,11 @@ final class Rename {
         this.validate(files, newNames);
         for (int i = 0; i < files.size(); i++) {
             if (!newNames.get(i).equals(files.get(i).getName())) {
-                Files.move(files.get(i).toPath(), Paths.get(newNames.get(i)));
+                try{
+                    Files.move(files.get(i).toPath(), Paths.get(newNames.get(i)));
+                }catch (final FileAlreadyExistsException exc){
+                    System.out.printf("File %s already exist",exc.getFile());
+                }
             }
         }
     }
