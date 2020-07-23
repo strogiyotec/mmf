@@ -3,6 +3,7 @@ package rmf;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +24,7 @@ final class Rename {
         this.validate(files, newNames);
         var oldToNew = this.toFiles(files, newNames);
         for (var entry : oldToNew.entrySet()) {
-            Files.move(entry.getKey().toPath(), entry.getValue().toPath());
+            Files.move(entry.getKey().toPath(), entry.getValue().toPath(), StandardCopyOption.REPLACE_EXISTING);
         }
     }
 
@@ -34,21 +35,26 @@ final class Rename {
         this.checkDuplicateNames(newNames);
     }
 
-    private Map<File, File> toFiles(final List<File> files, final List<String> newNames) {
+    private Map<File, File> toFiles(final List<File> files, final List<String> newNames) throws IOException {
         var oldAndNew = new HashMap<File, File>(files.size() + 2);
         for (int i = 0; i < files.size(); i++) {
             var newFile = new File(newNames.get(i));
             if (newFile.compareTo(files.get(i)) != 0) {
+                //If file already exists then stop
                 if (newFile.exists()) {
-                    throw new IllegalStateException(String.format("File %s already exists", newFile.getName()));
+                    throw new IllegalStateException(
+                            String.format(
+                                    "File %s already exists", newFile.getName()
+                            )
+                    );
                 }
+                //If given file is directory
                 if (newFile.isDirectory()) {
                     throw new IllegalStateException(String.format("File %s is a directory", newFile.getName()));
                 }
-                final File file = newFile.getParentFile();
-                if (file != null) {
-                    file.mkdir();
-                }
+                //Create sub folders if file is moved to another
+                newFile.mkdirs();
+                newFile.createNewFile();
                 oldAndNew.put(files.get(i), newFile);
             }
         }
