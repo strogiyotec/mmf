@@ -13,16 +13,19 @@ final class Execution {
      *
      * @param files Files to rename
      * @param edit  Editor to use
-     * @throws Exception If failed
      */
-    void start(final List<File> files, final NamesEditor edit) throws Exception {
-        new Rename()
-                .renameFiles(
-                        edit.edit(
-                                files,
-                                new TempFileBuilder(files)
-                        ),
-                        files
-                );
+    void start(final List<File> files, final NamesEditor edit) {
+        try{
+            new Rename()
+                    .renameFiles(
+                            edit.edit(
+                                    files,
+                                    new TempFileBuilder(files)
+                            ),
+                            files
+                    );
+        }catch (final Exception exc){
+            System.out.println(exc.getMessage());
+        }
     }
 }
