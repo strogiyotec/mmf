@@ -17,14 +17,22 @@ final class Rename {
      *
      * @param tempFile Temp file that contain new file names
      * @param files    Files to rename
-     * @throws IOException If failed
+     * @throws IOException              If failed
+     * @throws IllegalStateException    If amount of names in temp file is not equal to amount of files
+     * @throws IllegalStateException    If at least one file with name from temp file exists
+     * @throws IllegalStateException    If at least one name in temp file is a directory instead of file name
+     * @throws IllegalArgumentException If temp file has duplicate names
      */
     void renameFiles(final File tempFile, final List<File> files) throws IOException {
         var newNames = Files.readAllLines(tempFile.toPath());
         this.validate(files, newNames);
         var oldToNew = this.toFiles(files, newNames);
         for (var entry : oldToNew.entrySet()) {
-            Files.move(entry.getKey().toPath(), entry.getValue().toPath(), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(
+                    entry.getKey().toPath(),
+                    entry.getValue().toPath(),
+                    StandardCopyOption.REPLACE_EXISTING
+            );
         }
     }
 
