@@ -5,6 +5,9 @@ Rename multiple files using your $EDITOR. Written in Java compiled by native-ima
 1. Install executable from latest [release](https://github.com/strogiyotec/rmf/releases)
 2. Put executable into `/usr/local/bin' directory to access it from everywhere
 
+# Important
+Starting with relase 2.0 executable was renamed from **rmf** to **mmf** 
+(Move multiple files) because rmf sometimes is confused with Remove multiple files abbreviation
 
 # Example
 

@@ -76,7 +76,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalName>rmf</finalName>
+                            <finalName>mmf</finalName>
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
@@ -101,7 +101,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <imageName>rmf</imageName>
+                    <imageName>mmf</imageName>
                     <mainClass>rmf.Main</mainClass>
                     <buildArgs>
                         -H:+PrintAnalysisCallTree
