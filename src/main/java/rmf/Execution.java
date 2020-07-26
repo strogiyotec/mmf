@@ -1,6 +1,7 @@
 package rmf;
 
 import java.io.File;
+import java.io.PrintStream;
 import java.util.List;
 
 /**
@@ -14,18 +15,26 @@ final class Execution {
      * @param files Files to rename
      * @param edit  Editor to use
      */
-    void start(final List<File> files, final NamesEditor edit) {
-        try{
-            new Rename()
-                    .renameFiles(
-                            edit.edit(
-                                    files,
-                                    new TempFileBuilder(files)
-                            ),
-                            files
-                    );
-        }catch (final Exception exc){
-            System.out.println(exc.getMessage());
+    void start(final List<File> files, final NamesEditor edit, final PrintStream output) {
+        if (files.isEmpty()) {
+            this.version(output);
+        } else {
+            try {
+                new Rename()
+                        .renameFiles(
+                                edit.edit(
+                                        files,
+                                        new TempFileBuilder(files)
+                                ),
+                                files
+                        );
+            } catch (final Exception exc) {
+                System.out.println(exc.getMessage());
+            }
         }
+    }
+
+    private void version(final PrintStream output) {
+        output.printf("rmf %s\n", Defaults.VERSION);
     }
 }

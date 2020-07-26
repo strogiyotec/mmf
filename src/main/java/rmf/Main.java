@@ -7,12 +7,10 @@ import java.util.stream.Stream;
 
 public final class Main {
     public static void main(String[] args) {
-        if (args.length == 0) {
-            return;
-        }
         new Execution().start(
                 toFiles(args),
-                new Vim(new ProcessBuilder())
+                new Vim(new ProcessBuilder()),
+                System.out
         );
     }
 
