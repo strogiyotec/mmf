@@ -29,7 +29,7 @@ final class Execution {
                                 files
                         );
             } catch (final Exception exc) {
-                System.out.println(exc.getMessage());
+                output.println(exc.getMessage());
             }
         }
     }
