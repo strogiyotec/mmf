@@ -39,10 +39,12 @@ final class ExecutionTestCase {
     void testVersion() throws IOException {
         try (var stream = new ByteArrayOutputStream()) {
             try (var print = new PrintStream(stream)) {
-                new Execution().start(
-                        Collections.emptyList(),
-                        new MockedEditor(Collections.emptyList()),
-                        print);
+                new Execution()
+                        .start(
+                                Collections.emptyList(),
+                                new MockedEditor(Collections.emptyList()),
+                                print
+                        );
                 Assertions.assertTrue(stream.toString().contains(String.format("rmf %s", Defaults.VERSION)));
             }
         }
