@@ -12,10 +12,15 @@ Starting with relase 2.0 executable was renamed from **rmf** to **mmf**
 # Example
 
 This is how it works.
-1. You send names of all files you want to rename to rmf(rename multiple files).
+1. You send names of all files you want to rename to rmf(you can specify name by name or use regex).
 2. Then **rmf** will open your $EDITOR(vim if value is not set) with file names.
 3. Change names and save the file (:wq in vim)
 4. Your files are renamed 
+
+The final command will look like this(it will rename all files ending with .txt)
+```
+mmf *.txt
+```
 
 # Demo
 ![demo](https://raw.githubusercontent.com/strogiyotec/rmf/master/statics/example_2.gif)
