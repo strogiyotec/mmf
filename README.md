@@ -18,6 +18,6 @@ This is how it works.
 4. Your files are renamed 
 
 # Demo
-![demo](https://raw.githubusercontent.com/strogiyotec/rmf/master/statics/example.gif)
+![demo](https://raw.githubusercontent.com/strogiyotec/rmf/master/statics/example_2.gif)
 
 I have three files hello1,hello2,hello3 and I want to append **world** to each file name
