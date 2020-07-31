@@ -20,4 +20,4 @@ This is how it works.
 # Demo
 ![demo](https://raw.githubusercontent.com/strogiyotec/rmf/master/statics/example.gif)
 
-As you can see three files (b1,b2,b3) were renamed
+I have three files hello1,hello2,hello3 and I want to append **world** to each file name
