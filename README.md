@@ -13,7 +13,7 @@ Starting with relase 2.0 executable was renamed from **rmf** to **mmf**
 
 This is how it works.
 1. You send names of all files you want to rename to rmf(you can specify name by name or use regex).
-2. Then **rmf** will open your $EDITOR(vim if value is not set) with file names.
+2. Then **rmf** will open your $EDITOR(vim if value is not set) with file names you want to rename.
 3. Change names and save the file (:wq in vim)
 4. Your files are renamed 
 

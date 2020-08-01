@@ -45,11 +45,12 @@ final class Rename {
     }
 
     /**
-     * Map files with their new names.
+     * Creates map where key is file with old name and
+     * value is file with new name
      *
      * @param files    Files to rename
      * @param newNames New names
-     * @return Map where key is file with old name and value is file with new name
+     * @return Map
      * @throws IOException If failed
      */
     private Map<File, File> toFiles(final List<File> files, final List<String> newNames) throws IOException {
@@ -59,7 +60,12 @@ final class Rename {
             if (newFile.compareTo(files.get(i)) != 0) {
                 //If given file is directory
                 if (newFile.isDirectory()) {
-                    throw new IllegalStateException(String.format("File %s is a directory", newFile.getName()));
+                    throw new IllegalStateException(
+                            String.format(
+                                    "File %s is a directory",
+                                    newFile.getName()
+                            )
+                    );
                 }
                 //If file already exists then stop
                 if (newFile.exists()) {
