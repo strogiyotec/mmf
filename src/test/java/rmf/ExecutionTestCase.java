@@ -36,6 +36,26 @@ final class ExecutionTestCase {
     }
 
     @Test
+    @DisplayName("Test that in case of error, message will be printed into print stream")
+    void testErrorPrint() throws Exception {
+        try (var stream = new ByteArrayOutputStream()) {
+            try (var print = new PrintStream(stream)) {
+                new Execution()
+                        .start(
+                                Collections.singletonList(
+                                        new TempFileBuilder("testFileToRename").build()
+                                ),
+                                new MockedEditor(
+                                        List.of("first", "second")
+                                ),
+                                print
+                        );
+                Assertions.assertTrue(stream.toString().contains("rmv doesn't delete or add files"));
+            }
+        }
+    }
+
+    @Test
     void testVersion() throws IOException {
         try (var stream = new ByteArrayOutputStream()) {
             try (var print = new PrintStream(stream)) {
@@ -48,6 +68,5 @@ final class ExecutionTestCase {
                 Assertions.assertTrue(stream.toString().contains(String.format("rmf %s", Defaults.VERSION)));
             }
         }
-
     }
 }

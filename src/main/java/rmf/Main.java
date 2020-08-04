@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Main {
+
     public static void main(String[] args) {
         new Execution().start(
                 toFiles(args),

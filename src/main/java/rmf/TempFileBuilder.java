@@ -10,7 +10,6 @@ final class TempFileBuilder {
 
     private final Callable<File> callable;
 
-
     TempFileBuilder(final String name) {
         this.callable = () -> {
             var tempFile = File.createTempFile(name,"test");
