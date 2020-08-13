@@ -4,6 +4,7 @@
 ## Install
 1. Install executable from latest [release](https://github.com/strogiyotec/rmf/releases)
 2. Put executable into `/usr/local/bin' directory to access it from everywhere
+3. You have to have glibc version >=2.15. In order to check your current version run this command `ldd --version`
 
 # Important
 Starting with relase 2.0 executable was renamed from **rmf** to **mmf** 
