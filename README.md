@@ -1,4 +1,6 @@
 # mmf
+![mmf build CI](https://github.com/strogiyotec/mmf/workflows/mmf%20build%20CI/badge.svg?branch=master)
+
 **mmf**(Move multiple files) allows you to rename multiple files at once using your $EDITOR. Written in Java compiled by native-image.
 
 ## Install
